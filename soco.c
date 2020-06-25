@@ -7,4 +7,6 @@
 struct Possition{
 	int x;
 	int y;
+	unsigned char zn;
+	chtype ozn;
 };
