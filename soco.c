@@ -12,9 +12,7 @@ struct Possition{
 };
 
 #define N 10
-
-struct Possition pos[N] = {};
-
+struct Possition obj[N] = {};
 int wbox = 0;
 int lve = 0;
 
@@ -58,11 +56,11 @@ void lvllist(int *h, int *w, int *array, int y, int x, int n)
 void Color()
 {
 	init_color(COLOR_BLACK, 0, 0, 0);
-	init_color(2, COLOR_RED, COLOR_BLACK);
-	init_color(1, COLOR_GREEN, COLOR_BLACK);
-	init_color(3, COLOR_YELLOW, COLOR_BLACK);
-	init_color(4, COLOR_BLUE, COLOR_BLACK);
-	init_color(5, COLOR_PINK, COLOR_BLACK); 	// pink
+	init_pair(2, COLOR_RED, COLOR_BLACK);
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(4, COLOR_BLUE, COLOR_BLACK);
+	init_pair(5, COLOR_CYAN, COLOR_BLACK); 	
 }
 
 void Level (int n)
@@ -99,12 +97,11 @@ void Level (int n)
 					obj[0].zn = 'P';
 					mvaddch(obj[0].yPos,obj[0].xPos,obj[0].zn | COLOR_PAIR(3));
 					break;
-				}
 			}
 		}
 		move(obj[0].yPos,obj[0].xPos);
 	}
-	void Play(nt input)
+	void Play(int input)
 	{
 		bool restart = FALSE;
 		chtype up, lf, dw, rg, oup, olf, odw, org;  // движение игрока и толкание ящика
@@ -117,8 +114,8 @@ void Level (int n)
 		odw = (mvinch(obj[0].yPos+2,obj[0].xPos) & A_CHARTEXT);
 		org = (mvinch(obj[0].yPos,obj[0].xPos+2) & A_CHARTEXT);
 
-		for (int i = 0; o <=wbox; o++)
-			{wvaddch{obj[o].yPos, obj[o].xPos, obj[o].ozn};}
+		for (int o = 0; o <=wbox; o++)
+			{mvaddch(obj[o].yPos, obj[o].xPos, obj[o].ozn);}
 			switch (input)
 			{
 				case 'w':
@@ -206,7 +203,7 @@ void Level (int n)
 							restart = TRUE;
 							Level(lev);
 							break;
-							default
+							default:
 							break;
 						}
 						if (!restart)
@@ -228,7 +225,7 @@ void Level (int n)
 						if (!has_colors())
 						{
 							endwin();
-							printf("Error color \n", );
+							printf("Error color \n");
 							exit(1);
 						}
 						start_color();
