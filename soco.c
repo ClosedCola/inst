@@ -13,7 +13,7 @@ struct Possition{
 
 #define N 10
 
-stuct Possition pos[N] = {};
+struct Possition pos[N] = {};
 
 int wbox = 0;
 int lve = 0;
@@ -31,7 +31,7 @@ void lvllist(int *h, int *w, int *array, int y, int x, int n)
 			{1,2,5,0,0,1},
 			{1,4,0,4,0,1},
 			{1,0,0,0,0,1},
-			{1,1,1,1,1,1};
+			{1,1,1,1,1,1}
 		};
 		*array = map0[y][x];
 	}
@@ -40,15 +40,15 @@ void lvllist(int *h, int *w, int *array, int y, int x, int n)
 		*h = 9;
 		*w = 10;
 		int map1[9][10] = {
-			{1,1,1,1,1,1,1,1,1,1};
-			{1,0,0,0,0,0,0,0,0,1};
-			{1,0,0,0,0,2,0,0,0,1};
-			{1,0,0,0,0,0,0,0,0,1};
-			{1,0,4,0,0,0,0,0,0,1};
-			{1,0,0,0,0,0,0,0,0,1};
-			{1,0,0,0,0,5,0,0,0,1};
-			{1,0,0,0,0,0,0,0,0,1};
-			{1,1,1,1,1,1,1,1,1,1};
+			{1,1,1,1,1,1,1,1,1,1},
+			{1,0,0,0,0,0,0,0,0,1},
+			{1,0,0,0,0,2,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,1},
+			{1,0,4,0,0,0,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,1},
+			{1,0,0,0,0,5,0,0,0,1},
+			{1,0,0,0,0,0,0,0,0,1},
+			{1,1,1,1,1,1,1,1,1,1}
 	};
 	*array = map1[y][x];
 }
@@ -214,7 +214,30 @@ void Level (int n)
 							for (int o = 0; o <= wbox; o++)
 							{
 								obj[o].ozn = mvinch(obj[o].yPos, obj[o].xPos);
-								mvaddch(obj[o].yPos,obj[o].xPos, obj[o].zn | ((o == 0) & COLOR_PAIR(3) : COLOR_PAIR(5)));
+								mvaddch(obj[o].yPos,obj[o].xPos, obj[o].zn | ((o == 0) ? COLOR_PAIR(3) : COLOR_PAIR(5)));
 							}
 							move(obj[0].yPos,obj[0].xPos)
-							else restart =FALSE;
+						}
+						else restart =FALSE;
+					}
+
+					int main ()
+					{
+						int ch;
+						initscr();
+						if (!has_colors())
+						{
+							endwin();
+							printf("Error color \n", );
+							exit(1);
+						}
+						start_color();
+						palette();
+						Level(lev);
+						while ((ch = getch()) != 'q')
+						{
+							Play(ch);
+						}
+						endwin();
+						return 0;
+					}
