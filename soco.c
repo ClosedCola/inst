@@ -116,4 +116,105 @@ void Level (int n)
 		olf = (mvinch(obj[0].yPos,obj[0].xPos-2) & A_CHARTEXT);
 		odw = (mvinch(obj[0].yPos+2,obj[0].xPos) & A_CHARTEXT);
 		org = (mvinch(obj[0].yPos,obj[0].xPos+2) & A_CHARTEXT);
-}
+
+		for (int i = 0; o <=wbox; o++)
+			{wvaddch{obj[o].yPos, obj[o].xPos, obj[o].ozn};}
+			switch (input)
+			{
+				case 'w':
+				case 'W':
+					if (up !=35)
+					{
+						if (up == 64 && (oup == 45 || oup == 120))
+						{
+							obj [0].yPos -= 1;
+							for (int o = 1; o <= wbox; o++)
+							{
+								if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos))
+								{
+									obj[o].yPos -= 1;
+								}
+							}
+						}
+						else if (up != 64) obj[0].yPos -=1;
+					}
+					break;
+
+					case 's':
+					case 'S':
+						if (dw !=35)
+						{
+							if (dw == 64 && (odw == 45 || odw == 120))
+							{
+								obj[0].yPos += 1;
+								for (int o = 1; o <= wbox; o++)
+								{
+									if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos))
+									{
+										obj[o].yPos += 1;
+									}
+								}
+							}
+							else if (dw != 64) obj[0].yPos += 1;
+						}
+						break;
+					case 'a':
+					case 'A':
+						if (lf != 35)
+						{
+							if (lf == 64 && (olf == 45 || olf == 120))
+							{
+								obj[0].xPos -= 1;
+								for (int o = 1; o <= wbox; o++)
+								{
+									if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos))
+									{
+										obj[o].xPos -= 1;
+									}
+								}
+							}
+							else if (lf != 64) obj[0].xPos -= 1;
+						}
+						break;
+						case 'd':
+						case 'D':
+						 	if (rg != 35)
+							{
+								if (rg == 64 && (org ==45 || org == 120))
+								{
+									obj[0].xPos += 1;
+									for (int o = 1; o <= wbox; o++)
+									{
+										if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos))
+										{
+											obj[o].xPos += 1;
+										}
+									}
+								}
+								else if (rg != 64) obj[0].xPos += 1;
+							}
+							break;
+						case 'm':
+						case 'M':
+							restart = TRUE;
+							if (lev<2) lev +=1;
+							else lev = 0;
+							Level(lev);
+							break;
+						case 'r':
+						case 'R':
+							restart = TRUE;
+							Level(lev);
+							break;
+							default
+							break;
+						}
+						if (!restart)
+						{
+							for (int o = 0; o <= wbox; o++)
+							{
+								obj[o].ozn = mvinch(obj[o].yPos, obj[o].xPos);
+								mvaddch(obj[o].yPos,obj[o].xPos, obj[o].zn | ((o == 0) & COLOR_PAIR(3) : COLOR_PAIR(5)));
+							}
+							move(obj[0].yPos,obj[0].xPos)
+							else restart =FALSE;
