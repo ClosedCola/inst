@@ -75,8 +75,8 @@ void Level (int n)
 	{
 		for (x = 0; x < w; x++)
 		{
-			lvllist(&h, &w, &map, y, x, n);
-			swtch(map)
+			levlist(&h, &w, &map, y, x, n);
+			switch(map)
 			{
 				case 0: mvaddch (y+4,x+10,'-' | COLOR_PAIR(4)); break;
 				case 1: mvaddch (y+4,x+10,'#' | COLOR_PAIR(1)); break;
