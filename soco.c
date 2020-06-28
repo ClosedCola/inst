@@ -14,9 +14,9 @@ struct Possition{
 #define N 10
 struct Possition obj[N] = {};
 int wbox = 0;
-int lve = 0;
+int lev = 0;
 
-void lvllist(int *h, int *w, int *array, int y, int x, int n)
+void levlist(int *h, int *w, int *array, int y, int x, int n)
 {
 	if (n == 0 )
 	{
@@ -53,7 +53,7 @@ void lvllist(int *h, int *w, int *array, int y, int x, int n)
 }
 
 
-void Color()
+void palette()
 {
 	init_color(COLOR_BLACK, 0, 0, 0);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
@@ -66,6 +66,7 @@ void Color()
 void Level (int n)
 {
 	clear();
+	mvprintw(1,8, "Map ->", lev);
 	mvprintw(2,1, "Move - WASD Restart - R Exit - Q");
 	int x = 0, y = 0, h = 1, w = 1, map;
 	wbox = 0;
@@ -213,7 +214,7 @@ void Level (int n)
 								obj[o].ozn = mvinch(obj[o].yPos, obj[o].xPos);
 								mvaddch(obj[o].yPos,obj[o].xPos, obj[o].zn | ((o == 0) ? COLOR_PAIR(3) : COLOR_PAIR(5)));
 							}
-							move(obj[0].yPos,obj[0].xPos)
+							move(obj[0].yPos,obj[0].xPos);
 						}
 						else restart =FALSE;
 					}
@@ -238,3 +239,4 @@ void Level (int n)
 						endwin();
 						return 0;
 					}
+}
